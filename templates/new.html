@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>License Plate Recognition</title>
+</head>
+<body style="background-color:lavender; background-repeat: no-repeat; background-size:100% 100%">
+    <h1 style="text-align:center">License Plate Recognition</h1>
+    <hr>
+    <br>
+        <div style="text-align:center; padding-left:200px">
+
+    <div style="float:left;padding-left:100px;border:2px solid teal;border-radius:15px;width:300px;height:250px;margin:10px; text-align:center; margin:auto;padding:40px">
+        <h2>Choose a license plate image</h2>
+        <form action="http://127.0.0.1:5000/uploader" method="post" enctype="multipart/form-data" style="padding-top:60px">
+            <input type="file" name="file" id="upload_file" onchange="getImagePreview(event)" style="padding:7px;border:1px solid teal;border-radius:5px">
+
+
+            <br>
+            <br>
+            <input type="submit" value="Upload" name="submit">
+        </form>
+    </div>
+
+    <div style="float:left;border:2px solid teal;border-radius:15px;width:350px;height:330px;margin-left:30px" id="preview"></div>
+        </div>
+    <script type="text/javascript">
+        function getImagePreview(event)
+      {
+        var image=URL.createObjectURL(event.target.files[0]);
+        var imagediv= document.getElementById('preview');
+        var newimg=document.createElement('img');
+        imagediv.innerHTML='';
+        newimg.src=image;
+        newimg.width="300";
+        imagediv.appendChild(newimg);
+      }
+      </script>
+</body>
+</html>

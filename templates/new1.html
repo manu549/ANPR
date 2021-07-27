@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>License Plate Recognition</title>
+</head>
+<body style="background-color:lavender; background-repeat: no-repeat; background-size:100% 100%">
+    <h1 style="text-align:center">License Plate Recognition</h1>
+    <hr>
+    <br>
+    <div style="text-align:center; padding-left:100px">
+        <div style="float:left;padding-left:100px;border:2px solid teal;border-radius:15px;width:300px;height:250px;margin:10px; text-align:center; margin:auto;padding:40px">
+            <img src={{file}} alt="image" width="300" height="250">
+        </div>
+        <div style="float:left;border:2px solid teal;border-radius:15px;width:370px;height:286px;margin-left:30px;padding-top:43px">
+            <img src={{detect}} alt="image" width="300" height="250">
+        </div>
+        <div style="float:left;border:2px dashed teal;border-radius:15px;padding:10px;margin-left:20px;margin-bottom:20px;width:290px">
+            {% if number %}
+                <h3>License Number</h3>
+                <h3>{{number}}</h3>
+            {% else %}
+                <h3>License Plate</h3>
+                <img src={{plate}} alt="image" width="250" height="50">
+            {% endif %}
+
+
+        </div>
+        <div style="float:left;margin-left:20px;padding-left:10px;border:2px solid teal;border-radius:15px;width:300px;height:150px;text-align:center">
+            <h3>Choose a license plate image</h3>
+            <form action="http://127.0.0.1:5000/uploader" method="post" enctype="multipart/form-data" style="padding-top:5px">
+                <input type="file" name="file" id="upload_file" onchange="getImagePreview(event)" style="padding:7px;border:1px solid teal;border-radius:5px">
+                <br><br>
+                <input type="submit" value="Upload" name="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
