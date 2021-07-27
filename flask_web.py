@@ -6,9 +6,8 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-cascade = cv2.CascadeClassifier("C:/Users/Manu_Jalli/PycharmProjects/Projects/License plate "
-                                "recognition/haarcascade_russian_plate_number.xml")
+pytesseract.pytesseract.tesseract_cmd = r'./tesseract.exe'
+cascade = cv2.CascadeClassifier("./haarcascade_russian_plate_number.xml")
 
 g = None
 
@@ -23,7 +22,7 @@ def upload_file():
         f = request.files['file']
         print(f.filename)
         f.save(secure_filename(f.filename))
-        path = "C:/Users/Manu_Jalli/PycharmProjects/Projects/License plate recognition/cars/"+f.filename
+        path = "./static/cars/"+f.filename
         image = cv2.imread(path)
         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         coordinates = cascade.detectMultiScale(gray_image, 1.1, 4)
